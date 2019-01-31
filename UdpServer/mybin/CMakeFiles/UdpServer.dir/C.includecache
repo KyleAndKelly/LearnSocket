@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kylechen/Work/Project/APUEProject/LearnSocket/UdpServer/main.c
+string.h
+-
+netinet/in.h
+-
+stdio.h
+-
+unistd.h
+-
+strings.h
+-
+arpa/inet.h
+-
+ctype.h
+-
+
