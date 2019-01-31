@@ -1,3 +1,0 @@
-/home/kylechen/Work/Project/APUEProject/LearnSocket/UdpServer/mybin/CMakeFiles/rebuild_cache.dir
-/home/kylechen/Work/Project/APUEProject/LearnSocket/UdpServer/mybin/CMakeFiles/UdpServer.dir
-/home/kylechen/Work/Project/APUEProject/LearnSocket/UdpServer/mybin/CMakeFiles/edit_cache.dir
