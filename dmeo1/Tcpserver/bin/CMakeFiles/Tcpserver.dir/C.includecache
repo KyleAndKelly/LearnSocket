@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kylechen/Work/Project/APUEProject/LearnSocket/dmeo1/Tcpserver/Tcpserver.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+unistd.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+arpa/inet.h
+-
+error.h
+/home/kylechen/Work/Project/APUEProject/LearnSocket/dmeo1/Tcpserver/error.h
+
+/home/kylechen/Work/Project/APUEProject/LearnSocket/dmeo1/Tcpserver/error.c
+error.h
+/home/kylechen/Work/Project/APUEProject/LearnSocket/dmeo1/Tcpserver/error.h
+stdio.h
+-
+stdlib.h
+-
+
+/home/kylechen/Work/Project/APUEProject/LearnSocket/dmeo1/Tcpserver/error.h
+
