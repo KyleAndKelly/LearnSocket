@@ -1,1 +1,0 @@
-/usr/bin/cc   -rdynamic CMakeFiles/Tcpserver.dir/Tcpserver.c.o CMakeFiles/Tcpserver.dir/error.c.o  -o Tcpserver 

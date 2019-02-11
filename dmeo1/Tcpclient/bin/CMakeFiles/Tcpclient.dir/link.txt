@@ -1,1 +1,0 @@
-/usr/bin/cc   -rdynamic CMakeFiles/Tcpclient.dir/Tcpclient.c.o CMakeFiles/Tcpclient.dir/error.c.o  -o Tcpclient 

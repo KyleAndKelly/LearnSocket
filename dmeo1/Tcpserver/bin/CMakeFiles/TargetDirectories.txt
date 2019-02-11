@@ -1,3 +1,0 @@
-/home/kylechen/Work/Project/APUEProject/LearnSocket/dmeo1/Tcpserver/bin/CMakeFiles/rebuild_cache.dir
-/home/kylechen/Work/Project/APUEProject/LearnSocket/dmeo1/Tcpserver/bin/CMakeFiles/Tcpserver.dir
-/home/kylechen/Work/Project/APUEProject/LearnSocket/dmeo1/Tcpserver/bin/CMakeFiles/edit_cache.dir
