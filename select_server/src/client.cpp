@@ -28,7 +28,6 @@ servaddr.sin_port=htons(8000);
        cout<<"connect error"<<endl;
        return -1;
    }
-   cout<<"connect successful"<<endl;
         //发送数据send
         char *send_data="hello from client!";
         if(send(iofd,(void*)send_data,RECV_BUFF_SIZE,0)==-1)
@@ -36,33 +35,20 @@ servaddr.sin_port=htons(8000);
             cout<<"data send error"<<endl;
             return -1;
         }
-        cout<<"send successful"<<endl;
+       cout<<"connect success"<<endl;
        //读取数据recv
         char recv_buffer[RECV_BUFF_SIZE];
-        int ret_val=recv(iofd,(void*)recv_buffer,RECV_BUFF_SIZE,0);
-        if(ret_val==-1)
+        if(recv(iofd,(void*)recv_buffer,RECV_BUFF_SIZE,0)==-1)
         {
                 cout<<"data read error"<<endl;
                 return -1;   
                
          }
-         else if(ret_val==0)
-         {
-                cout<<"server closed"<<endl;
-                close(iofd);
-                return -1;
-        }
-        else
-        {
-             cout<<"data from server:"<<endl;
+         cout<<"data from server:"<<endl;
              cout<<recv_buffer<<endl;
-        }
-        
-        
 
         //关闭连接close
         close(iofd);
-        return 0;
 
 
 }

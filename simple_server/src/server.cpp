@@ -23,10 +23,10 @@ servaaddr.sin_port=htons(8000);
   {cout<<"creat socket error!"<<endl; return -1;}
   //监听套接字绑定到地址上bind
   if(bind(lisfd,( struct sockaddr *)&servaaddr,sizeof(servaaddr)))
-  {cout<<"bind socket error!"<<endl; return -1;}
+  {cout<<"bind socket error!"<<endl; close(lisfd);return -1;}
   //开始在该地址上监听listen(设定连接队列, 客户端connect发起第一次握手就放入连接队列,等待accept从队列中取出处理连接,将服务器端变为被动监听 ,非阻塞)
     if(listen(lisfd,BACKLOG_SIZE))
-  {cout<<"listen socket error!"<<endl; return -1;}
+  {cout<<"listen socket error!"<<endl; close(lisfd);return -1;}
   //建立while循环
   while(1)
   {
@@ -37,6 +37,7 @@ servaaddr.sin_port=htons(8000);
         if(iofd==-1)
         {
             cout<<"accept socket error"<<endl;
+            close(lisfd);
             return -1;
         }
         //读取数据recv
@@ -45,12 +46,25 @@ servaaddr.sin_port=htons(8000);
         if(ret_val==-1)
         {
                 cout<<"data read error"<<endl;
+                close(lisfd);
                 return -1;   
                
          }
-         cout<<"receve data  bytes:"<<ret_val<<endl;
-         cout<<"data from client:"<<endl;
-        cout<<recv_buffer<<endl;
+          else if(ret_val==0)
+        {
+                cout<<"client closed"<<endl;
+                close(iofd);
+                close(lisfd);
+                return -1;
+         }
+         else
+         {
+                 cout<<"receve data  bytes:"<<ret_val<<endl;
+                 cout<<"data from client:"<<endl;
+                 cout<<recv_buffer<<endl;
+         }
+         
+        
         //发送数据send
         cout<<"now send data to client"<<endl;
         char* send_data="hello from server!";
@@ -64,6 +78,6 @@ servaaddr.sin_port=htons(8000);
         close(iofd);
 
   }
-
+  close(lisfd);
     return 0;
 }
