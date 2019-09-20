@@ -23,12 +23,14 @@ servaddr.sin_port=htons(8000);
     }
  
     //请求连接connect
-   if( connect(iofd,(sockaddr*)&servaddr,RECV_BUFF_SIZE)){
+   if( connect(iofd,(sockaddr*)&servaddr,RECV_BUFF_SIZE))
+   {
        cout<<"connect error"<<endl;
+       return -1;
    }
         //发送数据send
-        char* send_data="hello from client!";
-        if(send(iofd,(void*)send_data,sizeof(send_data),0)==-1)
+        char *send_data="hello from client!";
+        if(send(iofd,(void*)send_data,RECV_BUFF_SIZE,0)==-1)
         {
             cout<<"data send error"<<endl;
             return -1;
