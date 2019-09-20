@@ -1,0 +1,1 @@
+g++   -std=c++11 -march=native -O3 -pthread  -O0 -Wall -g2 -ggdb  -rdynamic CMakeFiles/simple_server.dir/server.cpp.o  -o ../../bin/simple_server 
