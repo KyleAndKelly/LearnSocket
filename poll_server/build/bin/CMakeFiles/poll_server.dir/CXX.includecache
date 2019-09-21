@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kylechen/Work/Project/APUEProject/LearnSocket/poll_server/src/server.cpp
+iostream
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+unistd.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+poll.h
+-
+
