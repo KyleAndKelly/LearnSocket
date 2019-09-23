@@ -20,15 +20,7 @@ LearnSocket
 
 实战部分
 ----------
-###non_blocking_connect
-非阻塞式connect
 
 ###chat_server
 聊天程序
-
-###tcp_udp_sever
-同时处理tcp udp
-
-###xinetd
-超级服务xinetd
 

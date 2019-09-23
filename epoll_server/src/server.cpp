@@ -37,7 +37,7 @@ servaaddr.sin_port=htons(8000);
 //创建监听套接字对应的事件结构体
 struct epoll_event lisfd_event;
 lisfd_event.data.fd=lisfd;
-lisfd_event.events=EPOLLIN;
+lisfd_event.events=EPOLLIN|EPOLLET;//设置为边缘触发模式
 //创建epoll事件表
 int epoll_event_table=epoll_create(EPOLL_EVENT_SIZE);
 //创建epoll就绪事件结构体数组 将epoll查询结果放在里面
@@ -49,7 +49,7 @@ epoll_ctl(epoll_event_table,EPOLL_CTL_ADD,lisfd,&lisfd_event);
 while(1)
 {
       //epoll开始工作查看有无就绪事件
-      int ret_val=epoll_wait(epoll_event_table,events_result,20,3000);
+      int ret_val=epoll_wait(epoll_event_table,events_result,20,3000);//events事件数组里面有三种 一种是监听套接字 一种是
       if(ret_val==0)//epoll超时
       {
         cout<<"timr out "<<endl;
@@ -74,12 +74,14 @@ while(1)
            }
            struct epoll_event io_event;
            io_event.data.fd=iofd;
-           io_event.events=EPOLLIN;
+           io_event.events=EPOLLIN|EPOLLET;//设置为边缘触发模式
            epoll_ctl(epoll_event_table,EPOLL_CTL_ADD,iofd,&io_event);
 
          }
-         else if(events_result[i].data.fd!=lisfd)//如果就绪的是读写套接字
+     
+         else if(events_result[i].events&EPOLLIN)//如果就绪的是其他读写套接字,且其事件为可读
          {
+            
             char recv_buff[RECV_BUFF_SIZE];
             int ret=recv(events_result[i].data.fd,recv_buff,RECV_BUFF_SIZE,0);
             if(ret==-1)
@@ -89,8 +91,9 @@ while(1)
             else if(ret==0)
             {
               cout<<"client closed "<<events_result[i].data.fd<<endl;
+              close(events_result[i].data.fd);
               epoll_ctl(epoll_event_table,EPOLL_CTL_DEL,events_result[i].data.fd,NULL);
-              continue;
+          
             }
             else
             {
@@ -99,6 +102,11 @@ while(1)
             }
             
          }
+         else
+         {
+           cout<<"something else happen"<<endl;
+         }
+         
 
           
          
